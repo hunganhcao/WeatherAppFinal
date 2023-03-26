@@ -20,13 +20,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.weatherapp.ItemTouchHelperListener;
 import com.example.weatherapp.MainActivity;
 import com.example.weatherapp.R;
-import com.example.weatherapp.RecyclerViewItemTouchHelper;
 import com.example.weatherapp.search.SearchActivity;
-import com.example.weatherapp.Weather;
-import com.example.weatherapp.WeatherAdapter;
 
 
 import org.json.JSONException;
@@ -74,7 +70,6 @@ public class CityActivity extends AppCompatActivity implements ItemTouchHelperLi
         listData=db.getAllCity();
         for (int i = listWeather.size(); i < listData.size(); i++) {
             getCurrentWeather(listData.get(i).getCity());
-
         }
         if(listData.size()>=1){
         run=listData.get(listData.size()-1).getId();
@@ -95,7 +90,6 @@ public class CityActivity extends AppCompatActivity implements ItemTouchHelperLi
             public boolean onQueryTextSubmit(String query) {
                 getCurrentWeather(city);
                 db.addCity(new CityData(run+1,city));
-
                 Log.d("test insert",""+run);
                 return false;
             }
@@ -145,12 +139,12 @@ public class CityActivity extends AppCompatActivity implements ItemTouchHelperLi
         if(viewHolder instanceof WeatherAdapter.WeatherViewHolder){
             int index_delete=viewHolder.getAdapterPosition();
             Log.d("test_delete",""+index_delete);
+
             //remove
             db.deleteCity(listData.get(index_delete).getId());
             Log.d("test_delete",""+listData.get(index_delete).getId());
             wadap.removeItem(index_delete);
-
-
+            listData.remove(index_delete);
         }
     }
 

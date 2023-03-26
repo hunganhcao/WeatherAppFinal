@@ -44,8 +44,10 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        //bar hỗ trợ nút back
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
+        //
         addControls();
         searchView2=findViewById(R.id.search_bar_2);
 
@@ -55,9 +57,12 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 Intent intent=new Intent(SearchActivity.this, CityActivity.class);
                 intent.putExtra("EXTRA_MESSAGE",query);
+                //animation
                 Pair pair =new Pair<View,String>(searchView2,"searchtransition");
                 ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(SearchActivity.this,pair);
+                //
                 startActivity(intent,options.toBundle());
+                //
                 searchView2.setQuery("",false);
                 searchView2.clearFocus();
                 return false;
@@ -65,15 +70,21 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                //api
                 makelistSuggest(newText);
+                //
                 adapter.getFilter().filter(newText);
+                adapter.notifyDataSetChanged();
+//
                 return false;
             }
         });
         lvCity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 String val =(String) parent.getItemAtPosition(position);
+
                 searchView2.setQuery(val,true);
             }
         });
@@ -87,9 +98,9 @@ public class SearchActivity extends AppCompatActivity {
         adapter=new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,lst_city_temp);
         lvCity.setAdapter(adapter);
     }
+
     public void makelistSuggest(String data){
         lst_city_temp.clear();
-        //adapter.clear();
         String url="https://api.weatherapi.com/v1/search.json?key=18a482f9b21f4954952173441232003&q="+data;
         Log.d("test",url);
         RequestQueue requestQueue = Volley.newRequestQueue(SearchActivity.this);
@@ -115,10 +126,10 @@ public class SearchActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(SearchActivity.this, "sai", Toast.LENGTH_SHORT).show();
+                //
+                Toast.makeText(SearchActivity.this, "", Toast.LENGTH_SHORT).show();
             }
         });
-
         requestQueue.add(jsonArrayRequest);
 
     }
