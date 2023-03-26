@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/purple_starry_sky_pattern_sparkle_background"
+    tools:context=".search.SearchActivity">
+
+    <SearchView
+        android:id="@+id/search_bar_2"
+        android:layout_width="300dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="36dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Nhập tên thành phố"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/lv_city"
+        android:layout_width="409dp"
+        android:layout_height="675dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar_2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

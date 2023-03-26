@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    app:cardCornerRadius="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:paddingBottom="30dp"
+        android:layout_gravity="bottom">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:text="Delete"
+            android:layout_toStartOf="@+id/img_delete"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:textStyle="bold"
+            />
+        <ImageView
+            android:id="@+id/img_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/layout_foreground"
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:background="@drawable/custom_listview"
+
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="210dp"
+            android:layout_height="75dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/tv_city"
+                android:layout_width="210dp"
+                android:layout_height="43dp"
+                android:text="@{weather.city}"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                tools:text="@tools:sample/cities" />
+
+            <TextView
+                android:id="@+id/tv_detail"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:text="@{weather.detail}"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_city"
+                tools:text="@tools:sample/date/day_of_week" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_temp"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="@{weather.temp}"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/cities" />
+
+
+    </LinearLayout>
+
+
+</FrameLayout>
+
+

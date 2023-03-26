@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="back_btn">back_btn</string>
+    <string-array name="arrtinhthanh">
+        <item>Ha Noi</item>
+        <item>Sai Gon</item>
+        <item>Bac Ninh</item>
+        <item>Cao Bang</item>
+        <item>Đa Nang</item>
+        <item>Ca Mau</item>
+    </string-array>
+</resources>
